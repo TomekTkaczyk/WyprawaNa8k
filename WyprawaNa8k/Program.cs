@@ -11,6 +11,27 @@ namespace WyprawaNa8k
             Zadanie03();
             Zadanie04();
             Zadanie05();
+            Zadanie05a();
+        }
+
+        private static void Zadanie05a()
+        {
+            const int countNumbers = 20;
+            Console.WriteLine(@"{0} liczba ciągu Fibonacciego to {1}", countNumbers, Fibonacci(countNumbers)[countNumbers-1]);
+        }
+
+        private static IList<int> Fibonacci(int count)
+        {
+            if (count > 2)
+            {
+                var fi = Fibonacci(count - 1);
+                fi.Add(fi[count - 2] + fi[count - 3]);
+                return fi;
+            }
+            else
+            {
+                return new List<int> { 1, 1 };
+            }
         }
 
         private static void Zadanie05()
