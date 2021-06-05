@@ -8,7 +8,6 @@ namespace WyprawaNa8k
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine();
             Console.WriteLine("Timing oparty na Stopwatch[ms]");
             TimeCounter2();
@@ -16,8 +15,6 @@ namespace WyprawaNa8k
             Console.WriteLine();
             Console.WriteLine("Timing oparty na DateTime[tics]");
             TimeCounter1();
-
-
         }
 
         private static void TimeCounter1()
