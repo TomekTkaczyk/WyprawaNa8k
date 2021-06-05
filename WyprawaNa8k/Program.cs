@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace WyprawaNa8k
 {
@@ -7,12 +8,89 @@ namespace WyprawaNa8k
     {
         static void Main(string[] args)
         {
-            Zadanie02();
-            Zadanie03();
-            Zadanie04();
-            Zadanie05();
-            Zadanie05a();
+
+            Console.WriteLine();
+            Console.WriteLine("Timing oparty na Stopwatch[ms]");
+            TimeCounter2();
+
+            Console.WriteLine();
+            Console.WriteLine("Timing oparty na DateTime[tics]");
+            TimeCounter1();
+
+
         }
+
+        private static void TimeCounter1()
+        {
+            DateTime start;
+            DateTime stop;
+
+            start = DateTime.Now;
+            Zadanie05();
+            stop = DateTime.Now;
+            Console.WriteLine(@"Czas wykonania w pętli [tics]: {0}", (stop - start).Ticks);
+
+            start = DateTime.Now;
+            Zadanie05a();
+            stop = DateTime.Now;
+            Console.WriteLine(@"Czas wykonania w rekurencji [tics]: {0}", (stop - start).Ticks);
+
+            start = DateTime.Now;
+            Zadanie05();
+            stop = DateTime.Now;
+            Console.WriteLine(@"Czas wykonania w pętli [tics]: {0}", (stop - start).Ticks);
+
+            start = DateTime.Now;
+            Zadanie05a();
+            stop = DateTime.Now;
+            Console.WriteLine(@"Czas wykonania w rekurencji [tics]: {0}", (stop - start).Ticks);
+
+            start = DateTime.Now;
+            Zadanie05();
+            stop = DateTime.Now;
+            Console.WriteLine(@"Czas wykonania w pętli [ms]: {0}", (stop - start).Ticks);
+
+            start = DateTime.Now;
+            Zadanie05a();
+            stop = DateTime.Now;
+            Console.WriteLine(@"Czas wykonania w rekurencji [tics]: {0}", (stop - start).Ticks);
+        }
+
+        private static void TimeCounter2()
+        {
+            Stopwatch watch;
+
+            watch = Stopwatch.StartNew();
+            Zadanie05();
+            watch.Stop();
+            Console.WriteLine(@"Czas wykonania w pętli [ms]: {0}", watch.ElapsedMilliseconds);
+
+            watch = Stopwatch.StartNew();
+            Zadanie05a();
+            watch.Stop();
+            Console.WriteLine(@"Czas wykonania w rekurencji [ms]: {0}", watch.ElapsedMilliseconds);
+
+            watch = Stopwatch.StartNew();
+            Zadanie05();
+            watch.Stop();
+            Console.WriteLine(@"Czas wykonania w pętli [ms]: {0}", watch.ElapsedMilliseconds);
+
+            watch = Stopwatch.StartNew();
+            Zadanie05a();
+            watch.Stop();
+            Console.WriteLine(@"Czas wykonania w rekurencji [ms]: {0}", watch.ElapsedMilliseconds);
+
+            watch = Stopwatch.StartNew();
+            Zadanie05();
+            watch.Stop();
+            Console.WriteLine(@"Czas wykonania w pętli [ms]: {0}", watch.ElapsedMilliseconds);
+
+            watch = Stopwatch.StartNew();
+            Zadanie05a();
+            watch.Stop();
+            Console.WriteLine(@"Czas wykonania w rekurencji [ms]: {0}", watch.ElapsedMilliseconds);
+        }
+
 
         private static void Zadanie05a()
         {
