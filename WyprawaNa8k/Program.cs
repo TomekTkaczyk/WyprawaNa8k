@@ -15,6 +15,9 @@ namespace WyprawaNa8k
             Console.WriteLine();
             Console.WriteLine("Timing oparty na DateTime[tics]");
             TimeCounter1();
+
+            Console.ReadKey();
+
         }
 
         private static void TimeCounter1()
@@ -45,7 +48,7 @@ namespace WyprawaNa8k
             start = DateTime.Now;
             Zadanie05();
             stop = DateTime.Now;
-            Console.WriteLine(@"Czas wykonania w pętli [ms]: {0}", (stop - start).Ticks);
+            Console.WriteLine(@"Czas wykonania w pętli [tics]: {0}", (stop - start).Ticks);
 
             start = DateTime.Now;
             Zadanie05a();
@@ -86,16 +89,17 @@ namespace WyprawaNa8k
             Zadanie05a();
             watch.Stop();
             Console.WriteLine(@"Czas wykonania w rekurencji [ms]: {0}", watch.ElapsedMilliseconds);
+
         }
 
 
         private static void Zadanie05a()
         {
-            const int countNumbers = 20;
+            const int countNumbers = 10000;
             Console.WriteLine(@"{0} liczba ciągu Fibonacciego to {1}", countNumbers, Fibonacci(countNumbers)[countNumbers-1]);
         }
 
-        private static IList<int> Fibonacci(int count)
+        private static IList<ulong> Fibonacci(int count)
         {
             if (count > 2)
             {
@@ -105,14 +109,14 @@ namespace WyprawaNa8k
             }
             else
             {
-                return new List<int> { 1, 1 };
+                return new List<ulong> { 1, 1 };
             }
         }
 
         private static void Zadanie05()
         {
-            const int countNumbers = 20;
-            List<int> fibonacciNumbers = new List<int> { 1, 1 };
+            const int countNumbers = 20000;
+            List<ulong> fibonacciNumbers = new List<ulong> { 1, 1 };
             for(int i = 2; i < countNumbers; i++)
             {
                 fibonacciNumbers.Add(fibonacciNumbers[i - 2] + fibonacciNumbers[i - 1]);
