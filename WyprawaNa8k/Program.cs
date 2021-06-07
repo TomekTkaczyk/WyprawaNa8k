@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using WyprawaNa8k.Classes;
 
 namespace WyprawaNa8k
 {
@@ -8,16 +9,25 @@ namespace WyprawaNa8k
     {
         static void Main(string[] args)
         {
-            Console.WriteLine();
-            Console.WriteLine("Timing oparty na Stopwatch[ms]");
-            TimeCounter2();
+            Zadanie06();
+        }
 
-            Console.WriteLine();
-            Console.WriteLine("Timing oparty na DateTime[tics]");
-            TimeCounter1();
+        private static void Zadanie06()
+        {
+            var card1 = new Card("Tomek");
+            card1.RegisterNewTrace(10, "trasa 1");
+            card1.RegisterNewTrace(5, "trasa 2");
+            card1.RegisterNewTrace(24, "trasa 3");
+            card1.RegisterNewTrace(18, "trasa 4");
 
-            Console.ReadKey();
+            var card2 = new Card("Adam");
+            card2.RegisterNewTrace(2, "trasa 5");
+            card2.RegisterNewTrace(10, "trasa 1");
+            card2.RegisterNewTrace(13, "trasa 6");
+            card2.RegisterNewTrace(24, "trasa 3");
 
+            Console.WriteLine(card1.GetAccountHistory());
+            Console.WriteLine(card2.GetAccountHistory());
         }
 
         private static void TimeCounter1()
@@ -91,7 +101,6 @@ namespace WyprawaNa8k
             Console.WriteLine(@"Czas wykonania w rekurencji [ms]: {0}", watch.ElapsedMilliseconds);
 
         }
-
 
         private static void Zadanie05a()
         {
