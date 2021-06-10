@@ -9,25 +9,40 @@ namespace WyprawaNa8k
     {
         static void Main(string[] args)
         {
-            Zadanie06();
+            Zadanie07();
+        }
+
+        private static void Zadanie07()
+        {
+            var member01 = new MemberCard("Tomek", "Organization01");
+            var member02 = new MemberCard("Adam", "Organization02");
+            var sherpa01 = new SherpaCard("Kim", "Sherpa1");
+            var startDay = DateTime.Now;
+            var endDay = startDay.AddDays(1);
+            TripWithGroup trip01 = new TripWithGroup(startDay, endDay, 10, "Trasa01");
+            trip01.AddMemberToTrip(member01);
+            trip01.AddMemberToTrip(sherpa01);
+            var Guide = new GuideCard("Leon", "Przewodnik01");
+            Guide.RegisterNewTrip(trip01);
+            Guide.AddMemberToTrip(trip01, member02);
         }
 
         private static void Zadanie06()
         {
-            var card1 = new Card("Tomek");
-            card1.RegisterNewTrace(10, "trasa 1");
-            card1.RegisterNewTrace(5, "trasa 2");
-            card1.RegisterNewTrace(24, "trasa 3");
-            card1.RegisterNewTrace(18, "trasa 4");
+            //var card1 = new MemberCard("Tomek", "Organizacja1");
+            //card1.RegisterNewTrace(10, "trasa 1");
+            //card1.RegisterNewTrace(5, "trasa 2");
+            //card1.RegisterNewTrace(24, "trasa 3");
+            //card1.RegisterNewTrace(18, "trasa 4");
 
-            var card2 = new Card("Adam");
-            card2.RegisterNewTrace(2, "trasa 5");
-            card2.RegisterNewTrace(10, "trasa 1");
-            card2.RegisterNewTrace(13, "trasa 6");
-            card2.RegisterNewTrace(24, "trasa 3");
+            //var card2 = new MemberCard("Adam", "Organizacja2");
+            //card2.RegisterNewTrace(2, "trasa 5");
+            //card2.RegisterNewTrace(10, "trasa 1");
+            //card2.RegisterNewTrace(13, "trasa 6");
+            //card2.RegisterNewTrace(24, "trasa 3");
 
-            Console.WriteLine(card1.GetAccountHistory());
-            Console.WriteLine(card2.GetAccountHistory());
+            //Console.WriteLine(card1.GetAccountHistory());
+            //Console.WriteLine(card2.GetAccountHistory());
         }
 
         private static void TimeCounter1()

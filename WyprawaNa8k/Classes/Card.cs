@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WyprawaNa8k.Classes
 {
-    public class Card
+    public abstract class Card
     {
         private static int cardNumberSeed = 1234567890;
         private readonly List<Trace> allTraces = new List<Trace>();
@@ -17,7 +17,7 @@ namespace WyprawaNa8k.Classes
         }
 
         public string Number { get; }
-        public string Owner { get; set; }
+        public string Owner { get; }
         public decimal Distance
         {
             get
@@ -32,19 +32,18 @@ namespace WyprawaNa8k.Classes
             }
         }
 
-        public void RegisterNewTrace(decimal kilometers, string note)
+        public void RegisterNewTrace(DateTime date, decimal kilometers, string note)
         {
-            var trace = new Trace(kilometers, DateTime.Now, note);
-            allTraces.Add(trace);
+            allTraces.Add(new Trace(kilometers, date, note));
         }
 
         public string GetAccountHistory()
         {
             var history = new StringBuilder();
-            history.AppendFormat("Legitymacja {0} - {1}\n", Number, Owner);
-            foreach(Trace item in allTraces)
+            history.AppendFormat($"Legitymacja {Number} - {Owner}\n");
+            foreach (Trace item in allTraces)
             {
-                history.AppendFormat("Trasa: {0},\t Data: {1},\t Dystans: {2}\n", item.Notes, item.Date.ToShortDateString(), item.Kilometers);
+                history.Append($"Trasa: {item.Notes},\t Data: {item.Date.ToShortDateString()},\t Dystans: {item.Kilometers}\n");
             }
             history.AppendLine();
 
