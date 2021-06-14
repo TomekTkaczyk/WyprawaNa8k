@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace WyprawaNa8k.Classes
@@ -16,7 +17,10 @@ namespace WyprawaNa8k.Classes
 
         public void RegisterNewTrip(TripWithGroup trip)
         {
-            Trips.Add(trip);
+            if(trip.Kilometers != 0)
+            {
+                Trips.Add(trip);
+            }
         }
 
         public void AddMemberToTrip(TripWithGroup trip, Card member)
@@ -25,6 +29,19 @@ namespace WyprawaNa8k.Classes
             {
                 trip.AddMemberToTrip(member);
             }
+            else
+            {
+                Console.WriteLine($"The tour {trip.Note} cannot be held.");
+            }
+        }
+
+        public override string SayVictory()
+        {
+            var result = new StringBuilder();
+            result.Append($"I'am finish {Trips.Count} trip(s) with total {Trips.Select(x => x.Kilometers).Sum()} kilometers.");
+
+            return result.ToString();
+
         }
     }
 }                             

@@ -12,9 +12,17 @@ namespace WyprawaNa8k.Classes
 
         public Trace(decimal kilometers, DateTime date, string note)
         {
-            this.Kilometers = kilometers;
-            this.Date = date;
-            this.Notes = note;
+            try
+            {
+                this.Kilometers = kilometers;
+                this.Date = date;
+                this.Notes = note;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
     }
 }

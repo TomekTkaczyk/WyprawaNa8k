@@ -19,5 +19,10 @@ namespace WyprawaNa8k.Classes
         {
             trips.Add(new TripWithGroup(startTime, endTime, kilometers, note));
         }
+
+        public override string SayVictory()
+        {
+            return "It was very hard";
+        }
     }
 }

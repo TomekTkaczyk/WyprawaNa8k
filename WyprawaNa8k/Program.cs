@@ -17,14 +17,31 @@ namespace WyprawaNa8k
             var member01 = new MemberCard("Tomek", "Organization01");
             var member02 = new MemberCard("Adam", "Organization02");
             var sherpa01 = new SherpaCard("Kim", "Sherpa1");
+            var Guide = new GuideCard("Leon", "Przewodnik01");
+
             var startDay = DateTime.Now;
             var endDay = startDay.AddDays(1);
-            TripWithGroup trip01 = new TripWithGroup(startDay, endDay, 10, "Trasa01");
+
+            TripWithGroup trip01 = new TripWithGroup(startDay, endDay, 1000, "Trace01");
             trip01.AddMemberToTrip(member01);
             trip01.AddMemberToTrip(sherpa01);
-            var Guide = new GuideCard("Leon", "Przewodnik01");
             Guide.RegisterNewTrip(trip01);
             Guide.AddMemberToTrip(trip01, member02);
+            Console.WriteLine(Guide.SayVictory());
+
+            TripWithGroup trip02 = new TripWithGroup(startDay, endDay, 20, "Trace02");
+            trip02.AddMemberToTrip(member01);
+            trip02.AddMemberToTrip(sherpa01);
+            Guide.RegisterNewTrip(trip02);
+            Guide.AddMemberToTrip(trip02, member02);
+            Console.WriteLine(Guide.SayVictory());
+
+            TripWithGroup trip03 = new TripWithGroup(startDay, endDay, 60, "Trace02");
+            trip03.AddMemberToTrip(member01);
+            trip03.AddMemberToTrip(sherpa01);
+            Guide.RegisterNewTrip(trip03);
+            Guide.AddMemberToTrip(trip03, member02);
+            Console.WriteLine(Guide.SayVictory());
         }
 
         private static void Zadanie06()

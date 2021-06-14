@@ -49,5 +49,10 @@ namespace WyprawaNa8k.Classes
 
             return history.ToString();
         }
+
+        public virtual string SayVictory()
+        {
+            return "I'm the best";
+        }
     }
 }

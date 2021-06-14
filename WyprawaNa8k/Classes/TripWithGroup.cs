@@ -8,10 +8,31 @@ namespace WyprawaNa8k.Classes
     {
         public TripWithGroup(DateTime startTime, DateTime endTime, decimal kilometers, string note)
         {
-            StartTime = startTime;
-            EndTime = endTime;
-            Kilometers = kilometers;
-            Note = note;
+            try
+            {
+                Note = note;
+                if (kilometers <= 0 || kilometers > 200)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(kilometers), "Wrong kilometers.");
+                }
+                if (startTime > DateTime.Now)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(startTime), "Wrong start date.");
+                }
+                if (startTime > endTime)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(endTime), "Wrong end date.");
+                }
+                StartTime = startTime;
+                EndTime = endTime;
+                Kilometers = kilometers;
+
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
 
         }
 
@@ -24,8 +45,15 @@ namespace WyprawaNa8k.Classes
 
         public void AddMemberToTrip(Card member)
         {
-            member.RegisterNewTrace(StartTime, Kilometers, Note);
-            Members.Add(member);
+            if(Kilometers != 0)
+            {
+                member.RegisterNewTrace(StartTime, Kilometers, Note);
+                Members.Add(member);
+            }
+            else
+            {
+                Console.WriteLine($"The tour {Note} cannot be held.");
+            }
         }
     }
 }

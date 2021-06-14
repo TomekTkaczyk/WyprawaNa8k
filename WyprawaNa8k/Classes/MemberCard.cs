@@ -12,5 +12,10 @@ namespace WyprawaNa8k.Classes
         }
 
         public string Organization { get; }
+
+        public override string SayVictory()
+        {
+            return "It was very hard";
+        }
     }
 }
