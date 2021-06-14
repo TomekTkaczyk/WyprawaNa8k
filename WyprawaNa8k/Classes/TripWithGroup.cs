@@ -15,7 +15,7 @@ namespace WyprawaNa8k.Classes
                 {
                     throw new ArgumentOutOfRangeException(nameof(kilometers), "Wrong kilometers.");
                 }
-                if (startTime > DateTime.Now)
+                if (startTime < DateTime.Today)
                 {
                     throw new ArgumentOutOfRangeException(nameof(startTime), "Wrong start date.");
                 }

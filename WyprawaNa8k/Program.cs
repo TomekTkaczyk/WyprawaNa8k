@@ -19,7 +19,7 @@ namespace WyprawaNa8k
             var sherpa01 = new SherpaCard("Kim", "Sherpa1");
             var Guide = new GuideCard("Leon", "Przewodnik01");
 
-            var startDay = DateTime.Now;
+            var startDay = DateTime.Today;
             var endDay = startDay.AddDays(1);
 
             TripWithGroup trip01 = new TripWithGroup(startDay, endDay, 1000, "Trace01");
@@ -36,11 +36,20 @@ namespace WyprawaNa8k
             Guide.AddMemberToTrip(trip02, member02);
             Console.WriteLine(Guide.SayVictory());
 
-            TripWithGroup trip03 = new TripWithGroup(startDay, endDay, 60, "Trace02");
+            TripWithGroup trip03 = new TripWithGroup(startDay, endDay, 60, "Trace03");
             trip03.AddMemberToTrip(member01);
             trip03.AddMemberToTrip(sherpa01);
             Guide.RegisterNewTrip(trip03);
             Guide.AddMemberToTrip(trip03, member02);
+            Console.WriteLine(Guide.SayVictory());
+
+            startDay = DateTime.Today.AddDays(-1);
+            endDay = startDay.AddDays(1);
+            TripWithGroup trip04 = new TripWithGroup(startDay, endDay, 60, "Trace04");
+            trip04.AddMemberToTrip(member01);
+            trip04.AddMemberToTrip(sherpa01);
+            Guide.RegisterNewTrip(trip04);
+            Guide.AddMemberToTrip(trip04, member02);
             Console.WriteLine(Guide.SayVictory());
         }
 
